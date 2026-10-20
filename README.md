@@ -8,15 +8,13 @@ background.
 
 ```
 explain a concept  →  test you (critically)  →  mastered?
-   │    ↑                       │                   │
-   │    └── no: re-explain differently ◄────────────┤
-   │                            │                   │ yes
-   │                            │ mistakes          ▼
-   │                            ▼             next concept
-   └──► background sub-agent (same turn as the explanation)
-        writes the atomic note into your Obsidian vault, links it to
-        your existing notes and the course MOC, then enriches it with
-        "pitfall" callouts from your test mistakes
+        ↑                                          │
+        └──── no: re-explain differently ◄─────────┤
+                                                   │ yes
+                                                   ▼
+                     background sub-agent writes the note  →  next concept
+                     (reusing the exact explanations that worked
+                      + your mistakes as "pitfall" callouts)
 ```
 
 - **One concept at a time**, in the order of the course material (PDF,
@@ -25,19 +23,49 @@ explain a concept  →  test you (critically)  →  mastered?
 - **A test after every concept**: new cases, trick cases, "why?". No "almost
   right", no flattery, justification required. Until it is mastered, you go
   around again from a different angle.
-- **Zero note-taking friction**: as soon as a concept is explained (without
-  waiting for the test), a sub-agent drafts an atomic Obsidian note (LaTeX,
-  callouts, wikilinks), writes it into your vault, and links it to the notes
-  already there. Your
-  mistakes during the test become "pitfall" callouts in the note.
-- **A per-course MOC**: the sub-agent also maintains a map of content for
-  each course, following your vault's own structure (e.g. year / term /
-  course, imitating an existing MOC), and adds every new note under the
-  right chapter section — no orphan notes.
+- **Note written once the concept is validated**: the sub-agent waits for you
+  to pass the test so the note reuses exactly the explanations, analogies and
+  examples that finally made it click, plus your mistakes as "pitfall"
+  callouts. A catch-up check makes sure no validated concept is left without
+  its note.
+- **Zero note-taking friction**: the note is never discussed in the chat; the
+  sub-agent writes it straight into your vault (LaTeX, callouts, wikilinks)
+  and links it to the notes already there.
 
-The tutor always talks to you in your own language (e.g. French if you write
-in French), and notes are written in the language of the user/course unless
-told otherwise.
+## Vault structure (Zettelkasten adapted to Obsidian)
+
+The sub-agent manages the vault's **structure**, not just notes:
+
+```
+<vault>/
+├── Resources/           # all atomic notes, flat
+├── Maps of content/     # MOCs — the only folder with a real tree
+│   └── Studies/<Institution>/<Year>/<Term>/COURSE NAME.md
+└── Inbox/               # temporary notes, drafts, dashboards
+```
+
+- **Empty vault**: it bootstraps this structure from scratch (folders, course
+  MOC, a minimal `Inbox/Home.md`).
+- **Existing vault**: if the same structure already exists under other names,
+  it follows yours; it creates missing branches (new year, term, course) and
+  adds new MOC folders to dashboard / `.base` filters.
+- **One MOC per course**, with `##` sections following the chapters; every
+  new note is added to it — no orphan notes.
+- **Properties**: atomic notes get `MOC`, `Source` and `Date`; MOCs get
+  `cover` (left empty if no image is available).
+- **Strict atomicity**: one note = one small concept, ~15-60 lines
+  (`assets/example.md` is already an upper bound). A long note gets split into
+  smaller linked notes.
+- **Nothing is ever deleted**: removing a note means moving it to
+  `<vault>/.trash/`; `.obsidian/` is never touched.
+
+## Language
+
+When the course is taught in a language other than yours, the tutor
+**converses and tests you in the course language** (your exam will be in
+that language, so you learn the vocabulary from the start), unless you ask
+otherwise. You may answer in your own language. Notes are written in the
+course language by default.
 
 ## Contents
 
@@ -86,9 +114,10 @@ Claude needs read/write access to these folders (in the app: connected
 folders; in Claude Code: start the session from a parent folder or add
 them).
 
-> ⚠️ The sub-agent **writes directly into your vault**. It only adds content
-> (never deletes anything, never modifies `.obsidian/`), but back up / commit
-> your vault before the first use.
+> ⚠️ The sub-agent **writes directly into your vault** and may create folders
+> and edit dashboard filters. It never deletes anything (removed notes go to
+> `.trash/`) and never modifies `.obsidian/`, but back up / commit your vault
+> before the first use.
 
 ## Graphify (optional)
 
