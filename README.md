@@ -1,99 +1,100 @@
 # study-loop-obsidian
 
-Un skill Claude qui transforme Claude en **professeur socratique exigeant**
-pour étudier un cours, avec une **prise de notes Obsidian entièrement
-automatique** en arrière-plan.
+A Claude skill that turns Claude into a **demanding Socratic tutor** for
+studying a course, with **fully automatic Obsidian note-taking** in the
+background.
 
-## La boucle
-
-```
-expliquer un concept  →  te tester (avec esprit critique)  →  maîtrisé ?
-        ↑                                                     │
-        └──────────── non : réexpliquer autrement ◄───────────┤
-                                                              │ oui
-                        sous-agent en arrière-plan ◄──────────┘
-                 (écrit la note atomique dans ton coffre Obsidian,
-                  la relie à tes notes existantes)
-```
-
-- **Un concept à la fois**, dans l'ordre du support de cours (PDF, slides),
-  avec le formalisme exact du cours, des intuitions et des exemples concrets.
-- **Un test après chaque concept** : cas nouveaux, cas pièges, « pourquoi ? ».
-  Pas de « presque bon », pas de flatterie, justification exigée. Tant que ce
-  n'est pas maîtrisé, on recommence sous un autre angle.
-- **Zéro friction de prise de notes** : dès qu'un concept est validé, un
-  sous-agent rédige une note Obsidian atomique (LaTeX, callouts, wikilinks),
-  l'écrit dans ton coffre, et la relie aux notes déjà présentes. Tes erreurs
-  pendant le test deviennent des encadrés « piège » dans la note.
-
-## Contenu
+## The loop
 
 ```
-professeur-socratique/
-├── SKILL.md                  # le skill
-├── scripts/update_note_list.py  # liste les titres de notes du coffre
-└── assets/example.md         # référence de style pour les notes
+explain a concept  →  test you (critically)  →  mastered?
+        ↑                                           │
+        └──────── no: re-explain differently ◄──────┤
+                                                    │ yes
+                    background sub-agent ◄──────────┘
+             (writes the atomic note into your Obsidian vault,
+              links it to your existing notes)
+```
+
+- **One concept at a time**, in the order of the course material (PDF,
+  slides), with the course's exact formalism, intuitions and concrete
+  examples.
+- **A test after every concept**: new cases, trick cases, "why?". No "almost
+  right", no flattery, justification required. Until it is mastered, you go
+  around again from a different angle.
+- **Zero note-taking friction**: as soon as a concept is validated, a
+  sub-agent drafts an atomic Obsidian note (LaTeX, callouts, wikilinks),
+  writes it into your vault, and links it to the notes already there. Your
+  mistakes during the test become "pitfall" callouts in the note.
+
+The tutor always talks to you in your own language (e.g. French if you write
+in French), and notes are written in the language of the user/course unless
+told otherwise.
+
+## Contents
+
+```
+study-loop-obsidian/
+├── SKILL.md                     # the skill
+├── scripts/update_note_list.py  # lists the note titles in the vault
+└── assets/example.md            # style reference for notes
 ```
 
 ## Installation
 
-### Claude (app desktop / web)
+### Claude (desktop / web app)
 
-1. Télécharge `professeur-socratique.zip` depuis la dernière
-   [release](../../releases/latest) (ou zippe toi-même le dossier
-   `professeur-socratique/`).
-2. Dans Claude : **Paramètres → Capabilities → Skills → Upload skill**, et
-   choisis le zip.
+1. Download `study-loop-obsidian.zip` from the latest
+   [release](../../releases/latest) (or zip the `study-loop-obsidian/`
+   folder yourself).
+2. In Claude: **Settings → Capabilities → Skills → Upload skill**, and pick
+   the zip.
 
 ### Claude Code
 
 ```bash
 git clone https://github.com/Nicolas-Prn/study-loop-obsidian.git
 mkdir -p ~/.claude/skills
-ln -s "$(pwd)/study-loop-obsidian/professeur-socratique" ~/.claude/skills/professeur-socratique
+ln -s "$(pwd)/study-loop-obsidian/study-loop-obsidian" ~/.claude/skills/study-loop-obsidian
 ```
 
-(Le lien symbolique permet de récupérer les mises à jour avec un simple
-`git pull`.)
+(The symbolic link lets you get updates with a simple `git pull`.)
 
-## Personnalisation
+## Customisation
 
-Ouvre `SKILL.md` et adapte la section **« Profil de l'apprenant »** : c'est
-elle qui oriente les exemples concrets (DIY, finance, médecine, jeux
-vidéo...).
+Open `SKILL.md` and adapt the **"Learner profile"** section: it drives the
+choice of concrete examples (DIY, finance, medicine, video games...).
 
-## Première utilisation
+## First use
 
-Au début d'une session, donne à Claude :
+At the start of a session, give Claude:
 
-- le **chemin de ton coffre Obsidian** ;
-- l'emplacement de **`liste_notes.txt`** (liste centrale des titres de notes,
-  un seul fichier pour tous tes cours) ;
-- le **dossier du cours** où se trouvent les PDF/slides.
+- the **path to your Obsidian vault**;
+- the location of **`note_list.txt`** (central list of note titles, a single
+  file for all your courses);
+- the **course folder** containing the PDFs/slides.
 
-Claude a besoin d'un accès en lecture/écriture à ces dossiers (dans l'app :
-dossiers connectés ; dans Claude Code : lancer la session depuis un dossier
-parent ou les ajouter).
+Claude needs read/write access to these folders (in the app: connected
+folders; in Claude Code: start the session from a parent folder or add
+them).
 
-> ⚠️ Le sous-agent **écrit directement dans ton coffre**. Il n'ajoute que du
-> contenu (jamais de suppression, jamais de modification de `.obsidian/`),
-> mais fais une sauvegarde / un commit de ton coffre avant la première
-> utilisation.
+> ⚠️ The sub-agent **writes directly into your vault**. It only adds content
+> (never deletes anything, never modifies `.obsidian/`), but back up / commit
+> your vault before the first use.
 
-## Graphify (optionnel)
+## Graphify (optional)
 
-Si Graphify (paquet `graphifyy`) est installé et qu'un
-graphe du coffre existe (`<coffre>/graphify-out/graph.json`), le sous-agent
-s'en sert pour trouver les notes liées sans les ouvrir une à une. Le skill ne
-l'installe jamais lui-même. Outil tiers, non maintenu par Anthropic : teste
-d'abord sur un petit sous-dossier, la construction du graphe consomme du
-quota.
+If Graphify (package `graphifyy`) is installed and a graph of the vault
+exists (`<vault>/graphify-out/graph.json`), the sub-agent uses it to find
+related notes without opening them one by one. The skill never installs it
+itself. Third-party tool, not maintained by Anthropic: test it on a small
+subfolder first, building the graph consumes quota.
 
 ```bash
 uv tool install graphifyy
-graphify <sous_dossier_test> --obsidian --obsidian-dir <sous_dossier_test>
+graphify <test_subfolder> --obsidian --obsidian-dir <test_subfolder>
 ```
 
-## Licence
+## License
 
 MIT
