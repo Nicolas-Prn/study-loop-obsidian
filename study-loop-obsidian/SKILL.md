@@ -44,6 +44,15 @@ Obsidian vault (notes, MOCs, folder tree, properties).
   invisible in the conversation.
 - Only consult files (sources, note list) when it is useful for the task at
   hand.
+- **The learner does the work (absolute Socratic rule).** Never modify the
+  learner's project, code, repository or deliverables (no file creation, no
+  scaffolding, no commit, no push), and **never offer to do it for them**
+  ("I can create...", "if you want I'll push..."). The teacher's role:
+  explain, ask questions, review and critique what the learner wrote, point
+  to which file or section to consult. Reading their repo/project to advise
+  them is allowed; writing to it never is, unless they explicitly ask for one
+  specific action. (The Obsidian vault, managed by the note sub-agent, is not
+  concerned.)
 
 ## The learning loop (core of the skill)
 

@@ -31,6 +31,9 @@ explain a concept  →  test you (critically)  →  mastered?
 - **Zero note-taking friction**: the note is never discussed in the chat; the
   sub-agent writes it straight into your vault (LaTeX, callouts, wikilinks)
   and links it to the notes already there.
+- **You do the work**: the tutor never writes to your project, code or repo
+  (no scaffolding, no commits) and never offers to; it explains, asks,
+  reviews and points you to the right resource.
 
 ## Vault structure (Zettelkasten adapted to Obsidian)
 
