@@ -8,12 +8,15 @@ background.
 
 ```
 explain a concept  →  test you (critically)  →  mastered?
-        ↑                                           │
-        └──────── no: re-explain differently ◄──────┤
-                                                    │ yes
-                    background sub-agent ◄──────────┘
-             (writes the atomic note into your Obsidian vault,
-              links it to your existing notes)
+   │    ↑                       │                   │
+   │    └── no: re-explain differently ◄────────────┤
+   │                            │                   │ yes
+   │                            │ mistakes          ▼
+   │                            ▼             next concept
+   └──► background sub-agent (same turn as the explanation)
+        writes the atomic note into your Obsidian vault, links it to
+        your existing notes and the course MOC, then enriches it with
+        "pitfall" callouts from your test mistakes
 ```
 
 - **One concept at a time**, in the order of the course material (PDF,
@@ -22,10 +25,15 @@ explain a concept  →  test you (critically)  →  mastered?
 - **A test after every concept**: new cases, trick cases, "why?". No "almost
   right", no flattery, justification required. Until it is mastered, you go
   around again from a different angle.
-- **Zero note-taking friction**: as soon as a concept is validated, a
-  sub-agent drafts an atomic Obsidian note (LaTeX, callouts, wikilinks),
-  writes it into your vault, and links it to the notes already there. Your
+- **Zero note-taking friction**: as soon as a concept is explained (without
+  waiting for the test), a sub-agent drafts an atomic Obsidian note (LaTeX,
+  callouts, wikilinks), writes it into your vault, and links it to the notes
+  already there. Your
   mistakes during the test become "pitfall" callouts in the note.
+- **A per-course MOC**: the sub-agent also maintains a map of content for
+  each course, following your vault's own structure (e.g. year / term /
+  course, imitating an existing MOC), and adds every new note under the
+  right chapter section — no orphan notes.
 
 The tutor always talks to you in your own language (e.g. French if you write
 in French), and notes are written in the language of the user/course unless

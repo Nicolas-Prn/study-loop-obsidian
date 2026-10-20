@@ -41,12 +41,15 @@ user/course unless told otherwise.
 
 For each concept, in the order of the course:
 
-1. **Explain** the concept (explanation rules below).
+1. **Explain** the concept (explanation rules below) and, in the same turn,
+   launch the note sub-agent in the background (see "Background
+   note-taking").
 2. **Test** the user (testing rules below). Never move on to the next concept
    without a test.
 3. **Evaluate their answer with an enormous amount of critical thinking.**
-   - Mastery demonstrated → launch the note sub-agent in the background for
-     this concept, then move on to the next concept.
+   - Mastery demonstrated → move on to the next concept (if the test
+     revealed mistakes along the way, make sure the note has been enriched
+     with these pitfalls).
    - Mastery not demonstrated → **go around again**: re-explain by targeting
      precisely the gap observed, from a different angle than the first time
      (another analogy, another example, a finer breakdown), then retest with
@@ -154,21 +157,55 @@ and their table of contents to follow the order of the course.
 
 ## Background note-taking (expert sub-agent)
 
-**Trigger**: each time a concept is validated by the test, launch a
-sub-agent (Agent tool, `run_in_background: true`, general-purpose agent) and
-**immediately continue** the conversation on the next concept, without
-waiting for its result. Do not comment on this launch in the chat; at most a
-neutral half-line if the user needs to know a note has been added. If a
+**Trigger (do not wait for validation)**: as soon as a concept has been
+**explained** — in the same turn as the explanation — launch a sub-agent
+(Agent tool, `run_in_background: true`, general-purpose agent) that creates
+the note. NEVER wait for the test to be passed: a learner can loop on a
+concept for a long time, and the vault must never stay empty in the meantime
+(failure observed in a session: several concepts discussed, no note written
+because none was "validated" yet).
+Then, at each test correction that reveals a mistake or a confusion, launch
+a sub-agent again (or continue the previous one) to **enrich** the note
+concerned with a "pitfall" callout — by addition only.
+Continue the conversation immediately without waiting for the result. Do not
+comment on these launches in the chat; at most a neutral half-line. If a
 sub-agent reports a failure, say so in one line.
 
-If the configuration (vault, list) is not yet known, remember the validated
-concepts and launch the sub-agents to catch up as soon as it is.
+**Catch-up check (a reflex never to skip)**: before each explanation of a new
+concept, check mentally that every concept already explained in the session
+has had a sub-agent launched; if not, launch one for the missing ones in the
+same turn.
+
+If the configuration (vault, list) is not yet known, ask for it immediately
+and launch the sub-agents to catch up as soon as it is.
+
+### Vault organisation (pass to the sub-agent)
+
+The sub-agent must **follow the vault's existing logic**, never invent one.
+At the start of the session (once), locate in the vault:
+- where the atomic notes live;
+- where the course MOCs (maps of content) live, and according to which
+  hierarchy (year / term / course), with an existing MOC as a model to
+  imitate.
+For each course studied, the sub-agent makes sure a **course MOC** exists at
+the place set by this hierarchy (creating the missing year/term folder if
+needed) and **adds every new note** to it, in the section corresponding to
+the course chapter. No note must remain orphaned from the MOC.
+
+**Known configuration (fill in for your own vault)** (optional — reuse
+without asking again):
+- Vault: `<path/to/your/vault>`.
+- Note list: `<path/to/note_list.txt>`.
+- Atomic notes: `<folder of atomic notes, e.g. Resources/>`.
+- Course MOCs: `<MOC folder>/<Year>/<Term>/<COURSE NAME>.md` (give an
+  existing MOC as a model). The MOC lists the notes as `- [[Title]]` under
+  `##` sections that follow the course chapters.
 
 **The sub-agent's prompt must be self-contained** (it does not see the
 conversation) and contain:
 - the course, the chapter/section and the exact pages/slides of the source
   material (with their path), so that it rereads the exact formalism;
-- the validated concept, and all the mathematical/technical formalism as
+- the explained concept, and all the mathematical/technical formalism as
   presented in the course (no summary);
 - the analogies, intuitions and concrete anchors that made the user
   understand;
@@ -197,6 +234,9 @@ the background; you ask no questions. For the concept received:
    into the vault**, in the folder where the vault already stores this
    course's notes (find it in the folder tree; if it does not exist, follow
    the filing convention observed in the vault).
+   **Add every note to the course MOC** (create it if it does not exist, at
+   the place set by the vault's MOC hierarchy, imitating an existing MOC), in
+   the section of the chapter concerned.
 5. **Interconnect**: links to all relevant existing notes, and adding
    backlinks in the directly concerned existing notes (parent notion, sibling
    notions) — only by addition, never by modifying or deleting existing text.
