@@ -110,6 +110,12 @@ For each concept, in the order of the course:
   get an additional comparison note (e.g. "Lexical unit vs lexeme"). When a
   concept is validated, the note sub-agent's prompt must list the vocabulary
   terms introduced with it, each with the course's exact definition.
+- **Tools and technologies learned along the way (a reflex never to skip)**:
+  when a course or project makes the learner use a tool, language or library
+  (e.g. JFlex, a Makefile, a Java API), what they learn about it (syntax,
+  options, commands, their mistakes) is noted too, as atomic notes. Launch
+  the note sub-agent once the learner has **applied it correctly** (e.g. a
+  corrected file that works), not only after a classic Q&A test.
 - Always define the mathematical symbols used.
 - **Reproduce AT A MINIMUM the exact formalisations of the source course**
   (same complete expressions, same definition numbers). Any additional
@@ -226,6 +232,12 @@ vault's own names and hierarchy.
 - **Dashboards**: if `.base` files or home notes filter MOC folders (e.g.
   `file.inFolder("Maps of content/...")`), add the new folder to the filter
   (addition only) so that the course appears there.
+- **Tools and technologies**: a reusable tool or technology learned in a
+  course (e.g. JFlex) gets its OWN MOC (e.g. `JFLEX`), not just a section of
+  the course MOC. Place it in the branch of `Maps of content/` where the vault
+  keeps tool/technology MOCs; create a fitting branch only if none exists.
+  Link it from the course MOC. Its notes use `MOC: '[[<TOOL MOC>]]'` and
+  `Source: '[[<course MOC>]]'`.
 
 #### Properties (YAML frontmatter)
 
