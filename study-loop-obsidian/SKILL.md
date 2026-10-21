@@ -85,6 +85,14 @@ For each concept, in the order of the course:
   introduced (unless the user explicitly asks). If the goal is limited (e.g.
   "the minimum theory for a project"), first establish the minimal plan of
   the necessary sections and say so.
+- **Build on what the learner already knows (reflex never to skip)**:
+  before explaining a concept, check `note_list.txt` for notes the learner
+  already has on it, including ones from other courses or contexts (e.g.
+  regex notes written while learning JavaScript, before the formal regular
+  expressions of a language-theory course). If such notes exist, start from
+  them: say so in one line, reuse the learner's own vocabulary, and explain
+  what is new or different (e.g. formal notation vs practical syntax). The
+  learner should not have to point this out.
 - Be precise and rigorous, but clear; use analogies to convey the intuition
   before/alongside the formalism.
 - **Physical/mathematical intuition (a reflex never to skip)**: after a
@@ -196,6 +204,8 @@ conversation) and contain:
 - the mistakes and confusions made during the tests (pitfalls);
 - the notes language (course language);
 - the titles of the notes already created this session;
+- the learner's prior notes on this concept (from any course or context),
+  named explicitly;
 - the paths: vault, `note_list.txt`, course folder, course MOC;
 - the entire "Sub-agent mission" section below, copied verbatim.
 
@@ -277,6 +287,12 @@ vault's own names and hierarchy.
    definition note (create the missing ones).
 5. Avoid duplicates: if a note on this concept already exists, enrich it by
    addition rather than creating a second one.
+   Also look for notes on the same idea from other contexts (another
+   course, a programming language, a personal project): enrich them with a
+   short added section and link both ways, rather than creating isolated
+   parallel notes. When the new angle is a distinct concept (e.g. the formal
+   definition vs a programming-language syntax), create a separate note and
+   link it to the older one, both ways.
 6. Write the atomic notes in `Resources/`, with properties, in the course
    language.
 7. Add them to the course MOC; update the dashboards if needed.
