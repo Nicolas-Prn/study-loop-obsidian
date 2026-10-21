@@ -103,6 +103,13 @@ For each concept, in the order of the course:
      format: one or two sentences. Never force an artificial link.
   If the user says they are losing the thread, resume with an overview before
   continuing.
+- **Vocabulary (a reflex never to skip)**: every technical term the course
+  defines gets its own atomic definition note, even if it seems trivial (e.g.
+  "lexical unit", "lexeme"): these are exactly the terms the learner forgets
+  and must be able to find instantly by name in Obsidian. Pairs of close terms
+  get an additional comparison note (e.g. "Lexical unit vs lexeme"). When a
+  concept is validated, the note sub-agent's prompt must list the vocabulary
+  terms introduced with it, each with the course's exact definition.
 - Always define the mathematical symbols used.
 - **Reproduce AT A MINIMUM the exact formalisations of the source course**
   (same complete expressions, same definition numbers). Any additional
@@ -254,16 +261,18 @@ vault's own names and hierarchy.
    titles of the `.md` files without extension, hidden folders ignored).
 2. Check the structure (above) and complete it if needed.
 3. Check the formalism in the source material at the pages indicated.
-4. Avoid duplicates: if a note on this concept already exists, enrich it by
+4. List the vocabulary terms of the concept and check that each one has its
+   definition note (create the missing ones).
+5. Avoid duplicates: if a note on this concept already exists, enrich it by
    addition rather than creating a second one.
-5. Write the atomic notes in `Resources/`, with properties, in the course
+6. Write the atomic notes in `Resources/`, with properties, in the course
    language.
-6. Add them to the course MOC; update the dashboards if needed.
-7. Interconnect: links to the relevant existing notes, and backlinks in the
+7. Add them to the course MOC; update the dashboards if needed.
+8. Interconnect: links to the relevant existing notes, and backlinks in the
    directly concerned existing notes (addition only).
-8. Refresh `note_list.txt`.
-9. Report in 2-4 lines: notes created/enriched, structure modified, links
-   added, problems. Never claim to have written if the write failed.
+9. Refresh `note_list.txt`.
+10. Report in 2-4 lines: notes created/enriched, structure modified, links
+    added, problems. Never claim to have written if the write failed.
 
 Never delete any file or existing content (to remove a note, move it to
 `<vault>/.trash/`, which Obsidian treats as its trash). Never touch
@@ -282,6 +291,9 @@ Never delete any file or existing content (to remove a note, move it to
   definition, a property, a worked example, a special case, a comparison),
   it is a separate note. A definition and a worked example of that
   definition = two notes. When in doubt, prefer a finer note.
+- **A term defined in the course = a dedicated definition note**, even if
+  very short (a few lines is fine). Never bury a definition only inside a
+  broader note: the broader note links to it.
 - No H1 or H2. The note starts with a single H3 heading (its title), then H4
   to H6 only for the internal structure of this single concept.
 
