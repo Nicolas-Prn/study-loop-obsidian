@@ -73,7 +73,7 @@ course language by default.
 ## Contents
 
 ```
-study-loop-obsidian/
+skills/study-loop-obsidian/
 ├── SKILL.md                     # the skill
 ├── scripts/update_note_list.py  # lists the note titles in the vault
 └── assets/example.md            # style reference for notes
@@ -84,8 +84,8 @@ study-loop-obsidian/
 ### Claude (desktop / web app)
 
 1. Download `study-loop-obsidian.zip` from the latest
-   [release](../../releases/latest) (or zip the `study-loop-obsidian/`
-   folder yourself).
+   [release](../../releases/latest) (or zip the
+   `skills/study-loop-obsidian/` folder yourself).
 2. In Claude: **Settings → Capabilities → Skills → Upload skill**, and pick
    the zip.
 
@@ -94,7 +94,7 @@ study-loop-obsidian/
 ```bash
 git clone https://github.com/Nicolas-Prn/study-loop-obsidian.git
 mkdir -p ~/.claude/skills
-ln -s "$(pwd)/study-loop-obsidian/study-loop-obsidian" ~/.claude/skills/study-loop-obsidian
+ln -s "$(pwd)/study-loop-obsidian/skills/study-loop-obsidian" ~/.claude/skills/study-loop-obsidian
 ```
 
 (The symbolic link lets you get updates with a simple `git pull`.)
