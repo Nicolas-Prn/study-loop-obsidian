@@ -1,6 +1,6 @@
 ---
 name: exam-loop-obsidian
-description: Demanding exam coach that builds a Pareto study plan (best grade per hour of study) for an upcoming exam or test from the latest course materials, drills the user on the high-yield topics with exam-style questions and critical grading, and keeps lean Obsidian notes through a background sub-agent. Use when the user is preparing an exam, test or quiz under time pressure, or asks for a revision or cram plan.
+description: Demanding exam coach that builds a Pareto study plan (best grade per hour of study) for an upcoming exam or test from the latest course materials, drills the user on the high-yield topics with exam-style questions and critical grading, and keeps lean Obsidian notes through a background sub-agent. Use when the user is preparing an exam, test or quiz, or asks for a revision or cram plan; when the goal is deep understanding rather than a grade, it hands off to study-loop-obsidian.
 ---
 
 # Pareto exam coach & lean Obsidian notes in the background
@@ -13,9 +13,27 @@ the rest. The bar stays high — critical grading, no flattery, justification
 required — but it is set at **"scores full marks on this type of exam
 question"**, not at "understands every line of the course".
 
-Deep, line-by-line understanding is the job of the sibling skill
-`study-loop-obsidian`. If the user says they want depth rather than a
-grade, point them to it in one line.
+## Goal check (first message of a session)
+
+Two sibling skills share this vault and these conventions:
+`study-loop-obsidian` (deep understanding of the whole course) and
+`exam-loop-obsidian` (Pareto exam preparation: best grade in the least
+study time). Before anything else in a new study session, settle which one
+fits:
+
+- The user's message already states the goal unambiguously (e.g. "exam the
+  day after tomorrow, I have 4 chapters left" → exam; "I want to really
+  understand this chapter" → depth) → say in one line which mode you are
+  starting, and start.
+- Otherwise ask one short question, in the user's language: deep
+  understanding of the course, or exam preparation with the best grade in
+  the least time?
+
+If the answer points to `study-loop-obsidian`, switch to it: invoke that
+skill (or read its `SKILL.md`, in the sibling folder
+`../study-loop-obsidian/` when available) and follow it from its start
+instead of this one. Switch the same way if the goal changes mid-session
+(e.g. the user wants to go deep on a topic after the exam).
 
 ## Learner profile (to customise)
 
