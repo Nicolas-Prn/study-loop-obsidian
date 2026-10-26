@@ -1,0 +1,15 @@
+{
+  "name": "study-loop",
+  "version": "2.0.0",
+  "description": "Study skills with automatic Obsidian note-taking: a Socratic tutor for deep understanding and a Pareto exam coach for the best grade in the least time.",
+  "author": {
+    "name": "Nicolas Pruneau"
+  },
+  "repository": "https://github.com/Nicolas-Prn/study-loop-obsidian",
+  "license": "MIT",
+  "keywords": ["study", "obsidian", "exam", "tutor", "notes"],
+  "skills": [
+    "./skills/study-loop-obsidian",
+    "./skills/exam-loop-obsidian"
+  ]
+}

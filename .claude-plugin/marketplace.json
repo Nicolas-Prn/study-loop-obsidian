@@ -1,0 +1,15 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "study-loop",
+  "description": "Study skills with automatic Obsidian note-taking.",
+  "owner": {
+    "name": "Nicolas Pruneau"
+  },
+  "plugins": [
+    {
+      "name": "study-loop",
+      "description": "Socratic tutor for deep understanding and Pareto exam coach, both with background Obsidian note-taking.",
+      "source": "./"
+    }
+  ]
+}
