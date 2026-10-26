@@ -12,6 +12,11 @@ pick the one that matches your goal.
 Both are demanding: critical tests, no "almost right", no flattery. They
 differ in what they cover and how far they go.
 
+You never have to pick the skill yourself: whichever one Claude loads first
+asks for your goal at the start of the session (unless your first message
+already makes it clear) and hands off to the other one if it fits better.
+You can also switch mid-session.
+
 ## study-loop-obsidian — deep understanding
 
 A **demanding Socratic tutor** that covers the course concept by concept.
