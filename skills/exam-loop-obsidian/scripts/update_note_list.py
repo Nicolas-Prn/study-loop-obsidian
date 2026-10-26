@@ -1,0 +1,1 @@
+../../study-loop-obsidian/scripts/update_note_list.py
