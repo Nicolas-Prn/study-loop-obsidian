@@ -1,0 +1,1 @@
+../../study-loop-obsidian/assets/example.md
