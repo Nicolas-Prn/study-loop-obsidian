@@ -17,6 +17,14 @@ asks for your goal at the start of the session (unless your first message
 already makes it clear) and hands off to the other one if it fits better.
 You can also switch mid-session.
 
+Every session starts with a **session plan** sized to the time you have:
+the tutor explains what will be covered, with a time budget per item, and
+shows it in the client's progress panel (the **Progress** section in Claude
+desktop). Items are ticked off live as you validate them; when you fall
+behind, the plan is adjusted out loud so the session still ends on time —
+by moving concepts to the next session in `study-loop-obsidian`, by
+dropping the lowest-yield item in `exam-loop-obsidian`.
+
 ## study-loop-obsidian — deep understanding
 
 A **demanding Socratic tutor** that covers the course concept by concept.
