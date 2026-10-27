@@ -227,11 +227,11 @@ settled:
    it and completed as soon as it is validated, in the same turn as the
    note sub-agent. Exactly one item is in progress at a time.
 6. **Pace**: at each validation, compare the elapsed time with the plan
-   (read the clock when a tool gives it, e.g. `date`; otherwise ask the
-   start time once and estimate). When behind, re-plan out loud in one line
-   and update the panel so the session still ends on time with its plan
-   complete — depth is never cut: the last concepts move to the next
-   session. When ahead, pull the next item in.
+   (read the current time from the context or a tool and note the session's
+   start time; ask the user only when no clock is available). When behind,
+   re-plan out loud in one line and update the panel so the session still
+   ends on time with its plan complete — depth is never cut: the last
+   concepts move to the next session. When ahead, pull the next item in.
 7. **Wrap-up**: recap what was validated and what moves to the next
    session, then complete the last task.
 
