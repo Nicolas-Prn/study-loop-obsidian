@@ -77,7 +77,7 @@ Ask everything in **one compact message**, then wait for the answers:
    calculator), how it is graded (points per part, theory vs exercises),
    and any scope the teacher announced.
 2. **The time budget**: hours actually available for study until the exam,
-   per day.
+   per day, and the length of this session.
 3. **The target**: pass safely, or maximise the grade.
 4. **Self-assessment**: per chapter / exercise session, one word — solid,
    shaky, never seen.
@@ -131,6 +131,39 @@ confirmed.
 The plan is alive: re-plan out loud whenever the user falls behind
 schedule, a diagnostic shows a topic is stronger or weaker than assessed, or
 the remaining time changes.
+
+## Session plan and live progress
+
+Every session runs on a session plan shown in the client's progress panel.
+In the first session, open the panel with two tasks, `Intake` and
+`Pareto plan`, and add the session items once the Pareto plan is
+validated. In later sessions, resume from the plan note in the vault.
+
+1. **Session length**: ask how long this session will last, unless the
+   user already said.
+2. **Build the session plan**: the next items of the Pareto plan, in plan
+   order, with their time budgets, so that the whole list fits in the
+   session with ~5 minutes left for the wrap-up. Include the exam
+   simulation when its slot falls in this session.
+3. **Explain the plan** in the chat, compactly: one line per item with its
+   time budget, then one sentence on what the user will be able to do at
+   the end of the session and where it sits in the course.
+4. **Show it in the client's progress panel**: create one task per item
+   with the task-list tool (TodoWrite, or TaskCreate/TaskUpdate; in Claude
+   desktop it fills the Progress section), titled `<item> (~N min)`, plus a
+   last task `Wrap-up`. Without a task-list tool, show a compact checklist
+   in the chat after each validation instead.
+5. **Keep it live all session**: mark an item in progress when you start
+   it and completed as soon as it is validated, in the same turn as the
+   note sub-agent. Exactly one item is in progress at a time.
+6. **Pace**: at each validation, compare the elapsed time with the plan
+   (read the clock when a tool gives it, e.g. `date`; otherwise ask the
+   start time once and estimate). When behind, re-plan out loud in one line
+   and update the panel so the session still ends on time with its plan
+   complete — drop or downgrade the session's lowest-yield item first, and
+   keep the exam simulation. When ahead, pull the next item in.
+7. **Wrap-up**: recap what was validated and what moves to the next
+   session, then complete the last task.
 
 ## Phase 3 — The exam loop
 

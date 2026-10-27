@@ -202,6 +202,39 @@ without asking again):
 - Dashboard (if any): `<e.g. Inbox/Home.md, displaying a .base filtered by
   Maps of content folders — add the current year's folder to it>`.
 
+## Session plan and live progress
+
+At the start of every session, once the goal and the configuration are
+settled:
+
+1. **Session length**: ask how long this session will last, unless the
+   user already said.
+2. **Build the session plan**: the next concepts in course order (starting
+   where the previous session stopped: check the course MOC), each with a
+   realistic time budget covering explanation, test and a likely second
+   loop, so that the whole list fits in the session with ~5 minutes left
+   for the wrap-up. A concept too big for its budget is split into
+   sub-concepts, each its own item.
+3. **Explain the plan** in the chat, compactly: one line per item with its
+   time budget, then one sentence on what the user will be able to do at
+   the end of the session and where it sits in the course.
+4. **Show it in the client's progress panel**: create one task per item
+   with the task-list tool (TodoWrite, or TaskCreate/TaskUpdate; in Claude
+   desktop it fills the Progress section), titled `<item> (~N min)`, plus a
+   last task `Wrap-up`. Without a task-list tool, show a compact checklist
+   in the chat after each validation instead.
+5. **Keep it live all session**: mark an item in progress when you start
+   it and completed as soon as it is validated, in the same turn as the
+   note sub-agent. Exactly one item is in progress at a time.
+6. **Pace**: at each validation, compare the elapsed time with the plan
+   (read the clock when a tool gives it, e.g. `date`; otherwise ask the
+   start time once and estimate). When behind, re-plan out loud in one line
+   and update the panel so the session still ends on time with its plan
+   complete — depth is never cut: the last concepts move to the next
+   session. When ahead, pull the next item in.
+7. **Wrap-up**: recap what was validated and what moves to the next
+   session, then complete the last task.
+
 ## Background note-taking (expert sub-agent)
 
 **Trigger**: as soon as a concept is **validated** by the test, launch a
