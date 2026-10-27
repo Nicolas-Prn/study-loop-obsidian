@@ -139,11 +139,12 @@ Both skills share the same vault conventions. The sub-agent manages the vault's 
 
 ## Language
 
-When the course is taught in a language other than yours, both skills
-**converses and tests you in the course language** (your exam will be in
-that language, so you learn the vocabulary from the start), unless you ask
-otherwise. You may answer in your own language. Notes are written in the
-course language by default.
+Both skills **immerse you in the course language**: explanations, tests,
+feedback and the session plan are all in that language from the first
+message, whatever language you write in, because your exam will be in it.
+You may answer in your own language. Only when you are really lost on a
+point does the tutor explain that point in your language, then it switches
+back. Notes are written in the course language by default.
 
 ## Contents
 
