@@ -40,6 +40,11 @@ explain a concept  →  test you (critically)  →  mastered?
                       + your mistakes as "pitfall" callouts)
 ```
 
+- **Starts from your real level, automatically**: before a chapter or an
+  assignment, the tutor checks your vault for notes on its theory. If you
+  have none, it starts from the beginning of the chapter. For an
+  assignment, it first explains in plain words what is asked, what the
+  chapter is about, and which concept unlocks which exercise.
 - **One concept at a time**, in the order of the course material (PDF,
   slides), with the course's exact formalism, intuitions and concrete
   examples.
