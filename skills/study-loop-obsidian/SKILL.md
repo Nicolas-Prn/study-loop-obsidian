@@ -80,6 +80,11 @@ available) and follow it from its start instead of this one. Switch the same way
   assembly manual for a grammar, a shopping list for a list separated by
   `||`); tables mapping a concept onto his own code; complete recaps from
   scratch, in English.
+- **He wants to become able to model on his own.** Handing him a
+  formalisation (a formula, a model, the name of the theorem that links
+  two ideas) takes away exactly the exercise he is here for, and is not
+  stimulating. When his answer can be formalised, ask the question that
+  makes him do it; never write it for him (observed 2026-11-28).
 - **Always English (the course language).** He often sends voice messages
   in French only because speaking French is faster for him: that is never
   a request to switch language. Never answer in French unless he explicitly
@@ -340,6 +345,9 @@ don't see how", the same question asked again, the learner restating the point w
   intuition is written in prose ("Intuition: ...").
 - **Chat LaTeX: simple subset.** Short `$$...$$` blocks, no `\boxed`, no
   nested `\underbrace`/`\overbrace`.
+  In a terminal client (Claude Code), LaTeX is not rendered: write maths in
+  plain Unicode (β, ε, ≈, λ(t), β_A) inside a code block instead. Notes in
+  the vault keep LaTeX.
 
 ## Configuration to establish once per session (if not already known)
 
